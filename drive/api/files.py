@@ -177,7 +177,7 @@ def create_folder(team: str, file_name: str, parent: str | None = None):
             {
                 "file_name": file_name,
                 "team": team,
-                "parent_path": Path((parent_doc.file_url or "").lstrip("/")),,
+                "parent_path": Path((parent_doc.file_url or "").lstrip("/")),
             }
         ),
         home_folder,
