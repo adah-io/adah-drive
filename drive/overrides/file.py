@@ -429,11 +429,12 @@ def after_upload_file(doc):
             save_folder.mkdir(parents=True)
 
         doc.file_url = "/" + str(file_path)
-doc.mime_type = (
-    mimemapper.get_mime_type(str(temp_path), native_first=False)
-    or getattr(doc, "mime_type", None)
-    or "application/octet-stream"
-)
+        doc.mime_type = (
+            mimemapper.get_mime_type(str(temp_path), native_first=False)
+            or getattr(doc, "mime_type", None)
+            or "application/octet-stream"
+        )
+        doc.file_type = get_file_type(doc.mime_type)
         doc.file_type = get_file_type(doc.mime_type)
         doc.folder = get_home_folder(personal_team)["name"]
 
