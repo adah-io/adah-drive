@@ -166,16 +166,6 @@ def get_entity_with_permissions(entity_name: str | None = None):
         fields=FILE_FIELDS,
         limit=1,
     )
-    """
-    Return file data with permissions
-    """
-    entity = frappe.get_all(
-        "File",
-        filters={"name": entity_name},
-        or_filters={"status": STATUS_ACTIVE, "team": ["is", "not set"]},
-        fields=FILE_FIELDS,
-        limit=1,
-    )
     if not entity:
         # Mimic API v2 points
         frappe.local.response.errors = [
