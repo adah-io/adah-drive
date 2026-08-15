@@ -154,7 +154,13 @@ def get_entity_with_permissions(entity_name: str | None = None):
     """
     Return file data with permissions
     """
-    entity_name = entity_name or frappe.form_dict.get("entity_name")
+    payload = frappe.request.get_json(silent=True) or {}
+
+    entity_name = (
+        entity_name
+        or frappe.form_dict.get("entity_name")
+        or payload.get("entity_name")
+    )
 
     if not entity_name:
         frappe.throw("Entity name is required.", ValueError)
