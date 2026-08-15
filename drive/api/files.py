@@ -93,10 +93,10 @@ def upload_file(
         frappe.throw("You're out of storage!", ValueError)
 
     mime_type = (
-    mimemapper.get_mime_type(str(temp_path), native_first=False)
-    or file.mimetype
-    or "application/octet-stream"
-)
+        mimemapper.get_mime_type(str(temp_path), native_first=False)
+        or file.mimetype
+        or "application/octet-stream"
+    )
     file_type = get_file_type(mime_type)
     manager = FileManager()
 
