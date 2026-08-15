@@ -435,7 +435,6 @@ def after_upload_file(doc):
             or "application/octet-stream"
         )
         doc.file_type = get_file_type(doc.mime_type)
-        doc.file_type = get_file_type(doc.mime_type)
         doc.folder = get_home_folder(personal_team)["name"]
 
         manager = FileManager()
